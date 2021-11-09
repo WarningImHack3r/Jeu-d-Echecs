@@ -1,8 +1,11 @@
 package code;
+
+import java.io.Serializable;
+
 /**
  * Piece
  */
-public class Piece {
+public class Piece implements Serializable {
     // Permet d'obtenir les caractéristiques de la pièce
     // Liée à TypePiece, CouleurPiece et Case
 

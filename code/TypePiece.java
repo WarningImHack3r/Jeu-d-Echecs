@@ -1,22 +1,21 @@
 package code;
+
 /**
  * TypePiece
  */
-public enum TypePiece{
+public enum TypePiece {
     // Définir le type de pièce
     // Liée avec Case et Piece
 
-    Pion("Pion"), 
-    Roi("Roi"), 
-    Reine("Reine"), 
-    Cavalier("Cavalier"), 
-    Fou("Fou"), 
-    Tour("Tour"), 
-    Vide("Vide");
+    PION("Pion"), ROI("Roi"), REINE("Reine"), CAVALIER("Cavalier"), FOU("Fou"), TOUR("Tour"), VIDE("Vide");
 
-    public String name = "";
+    private String name = "";
 
-    TypePiece(String name){
+    TypePiece(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

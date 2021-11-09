@@ -1,4 +1,5 @@
 package code;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -14,24 +15,25 @@ public class Case extends JButton implements ActionListener {
     // Liée à Echiquier, TypePiece et Piece
 
     private static final long serialVersionUID = 1L;
-    
+
     private Piece piece; // classe Piece, les caractéristiques
     private Color couleurFond; // couleur de la case
-    private int abscisse, ordonnee; // abscisse et ordonnée de la pièce
-    public boolean hasBorders;
+    private int abscisse;
+    private int ordonnee; // abscisse et ordonnée de la pièce
+    boolean hasBorders;
 
-    public static ImageIcon roiBlanc = new ImageIcon("icons/Roiblanc.png");
-    public static ImageIcon roiNoir = new ImageIcon("icons/Roinoir.png");
-    public static ImageIcon reineBlanc = new ImageIcon("icons/Reineblanc.png");
-    public static ImageIcon reineNoir = new ImageIcon("icons/Reinenoir.png");
-    public static ImageIcon cavalierBlanc = new ImageIcon("icons/Cavalierblanc.png");
-    public static ImageIcon cavalierNoir = new ImageIcon("icons/Cavaliernoir.png");
-    public static ImageIcon tourBlanc = new ImageIcon("icons/Tourblanc.png");
-    public static ImageIcon tourNoir = new ImageIcon("icons/Tournoir.png");
-    public static ImageIcon fouBlanc = new ImageIcon("icons/Foublanc.png");
-    public static ImageIcon fouNoir = new ImageIcon("icons/Founoir.png");
-    public static ImageIcon pionBlanc = new ImageIcon("icons/Pionblanc.png");
-    public static ImageIcon pionNoir = new ImageIcon("icons/Pionnoir.png");
+    static ImageIcon roiBlanc = new ImageIcon("code/icons/Roiblanc.png");
+    static ImageIcon roiNoir = new ImageIcon("code/icons/Roinoir.png");
+    static ImageIcon reineBlanc = new ImageIcon("code/icons/Reineblanc.png");
+    static ImageIcon reineNoir = new ImageIcon("code/icons/Reinenoir.png");
+    static ImageIcon cavalierBlanc = new ImageIcon("code/icons/Cavalierblanc.png");
+    static ImageIcon cavalierNoir = new ImageIcon("code/icons/Cavaliernoir.png");
+    static ImageIcon tourBlanc = new ImageIcon("code/icons/Tourblanc.png");
+    static ImageIcon tourNoir = new ImageIcon("code/icons/Tournoir.png");
+    static ImageIcon fouBlanc = new ImageIcon("code/icons/Foublanc.png");
+    static ImageIcon fouNoir = new ImageIcon("code/icons/Founoir.png");
+    static ImageIcon pionBlanc = new ImageIcon("code/icons/Pionblanc.png");
+    static ImageIcon pionNoir = new ImageIcon("code/icons/Pionnoir.png");
 
     public Case(Color couleur, int abs, int ord) {
         this.couleurFond = couleur;
@@ -56,43 +58,43 @@ public class Case extends JButton implements ActionListener {
      */
     public void setPiece(Piece p) {
         this.piece = p;
-        if (p.getCouleur() == CouleurPiece.Blanc) {
-            if (p.getType() == TypePiece.Pion) {
+        if (p.getCouleur() == CouleurPiece.BLANC) {
+            if (p.getType() == TypePiece.PION) {
                 this.setIcon(pionBlanc);
                 this.setDisabledIcon(pionBlanc);
-            } else if (p.getType() == TypePiece.Tour) {
+            } else if (p.getType() == TypePiece.TOUR) {
                 this.setIcon(tourBlanc);
                 this.setDisabledIcon(tourBlanc);
-            } else if (p.getType() == TypePiece.Cavalier) {
+            } else if (p.getType() == TypePiece.CAVALIER) {
                 this.setIcon(cavalierBlanc);
                 this.setDisabledIcon(cavalierBlanc);
-            } else if (p.getType() == TypePiece.Fou) {
+            } else if (p.getType() == TypePiece.FOU) {
                 this.setIcon(fouBlanc);
                 this.setDisabledIcon(fouBlanc);
-            } else if (p.getType() == TypePiece.Roi) {
+            } else if (p.getType() == TypePiece.ROI) {
                 this.setIcon(roiBlanc);
                 this.setDisabledIcon(roiBlanc);
-            } else if (p.getType() == TypePiece.Reine) {
+            } else if (p.getType() == TypePiece.REINE) {
                 this.setIcon(reineBlanc);
                 this.setDisabledIcon(reineBlanc);
             }
-        } else if (p.getCouleur() == CouleurPiece.Noir) {
-            if (p.getType() == TypePiece.Pion) {
+        } else if (p.getCouleur() == CouleurPiece.NOIR) {
+            if (p.getType() == TypePiece.PION) {
                 this.setIcon(pionNoir);
                 this.setDisabledIcon(pionNoir);
-            } else if (p.getType() == TypePiece.Tour) {
+            } else if (p.getType() == TypePiece.TOUR) {
                 this.setIcon(tourNoir);
                 this.setDisabledIcon(tourNoir);
-            } else if (p.getType() == TypePiece.Cavalier) {
+            } else if (p.getType() == TypePiece.CAVALIER) {
                 this.setIcon(cavalierNoir);
                 this.setDisabledIcon(cavalierNoir);
-            } else if (p.getType() == TypePiece.Fou) {
+            } else if (p.getType() == TypePiece.FOU) {
                 this.setIcon(fouNoir);
                 this.setDisabledIcon(fouNoir);
-            } else if (p.getType() == TypePiece.Roi) {
+            } else if (p.getType() == TypePiece.ROI) {
                 this.setIcon(roiNoir);
                 this.setDisabledIcon(roiNoir);
-            } else if (p.getType() == TypePiece.Reine) {
+            } else if (p.getType() == TypePiece.REINE) {
                 this.setIcon(reineNoir);
                 this.setDisabledIcon(reineNoir);
             }
@@ -124,18 +126,15 @@ public class Case extends JButton implements ActionListener {
     }
 
     public boolean isOccupe() {
-        if (this.getPiece().getType() != TypePiece.Vide && this.getPiece().getCouleur() != CouleurPiece.Vide) {
-            return true;
-        }
-        return false;
+        return this.getPiece().getType() != TypePiece.VIDE && this.getPiece().getCouleur() != CouleurPiece.VIDE;
     }
-    
+
     /**
      * Listener de toutes les cases ; voir graphe d'état page 4
      */
     public void actionPerformed(ActionEvent e) {
         if (Echec.etat == 0) {
-            Echec.caseDep = (Case)e.getSource();
+            Echec.caseDep = (Case) e.getSource();
             if (Echec.caseDep.getPiece().getCouleur() == Echec.joueur) {
                 Echec.caseDep.setBorder(Echec.ligneRouge);
                 if (Echec.caseDep.isOccupe()) {
@@ -148,7 +147,7 @@ public class Case extends JButton implements ActionListener {
             Echec.f.cancelBtn.setEnabled(false);
         } else {
             if (this.hasBorders && this.getBorder() != Echec.ligneRouge) { // si dans les prédictions
-                Echec.caseArr = (Case)e.getSource();
+                Echec.caseArr = (Case) e.getSource();
                 if (Echec.unEchiquier.coupValideSansEchec(Echec.caseDep, Echec.caseArr)) {
                     if (Echec.unEchiquier.finJeu(Echec.joueur)) {
                         return;
@@ -176,15 +175,15 @@ public class Case extends JButton implements ActionListener {
                 // nettoyer les bordures
                 Echec.unEchiquier.removeNonMagentaBorders();
                 // copie modifiée de l'état 0
-                if (this.getPiece().getCouleur() == Echec.joueur) {
-                    if (this.getAbscisse() != Echec.caseDep.getAbscisse() || this.getOrdonnee() != Echec.caseDep.getOrdonnee()) { // si sélection d'une case de la même couleur, resélectionner directement
-                        this.setBorder(Echec.ligneRouge);
-                        Echec.caseDep = this;
-                        if (this.isOccupe()) {
-                            Echec.unEchiquier.prediction(this);
-                            Echec.unEchiquier.coupSansEchec();
-                            Echec.etat = 1;
-                        }
+                if (this.getPiece().getCouleur() == Echec.joueur && this.getAbscisse() != Echec.caseDep.getAbscisse()
+                        || this.getOrdonnee() != Echec.caseDep.getOrdonnee()) { // si sélection d'une case de la même
+                                                                                // couleur, resélectionner directement
+                    this.setBorder(Echec.ligneRouge);
+                    Echec.caseDep = this;
+                    if (this.isOccupe()) {
+                        Echec.unEchiquier.prediction(this);
+                        Echec.unEchiquier.coupSansEchec();
+                        Echec.etat = 1;
                     }
                 }
                 Echec.unEchiquier.cancelBtnIsClickable = false;
